@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Bangers", "Zen Dots", system-ui, sans-serif;
-  --font-accent: "Zen Dots", system-ui, sans-serif;
-  --font-body: "Rubik", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-accent: "Sora", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 
   /* deep navy/black base */
   --color-void-950: #05060a;
@@ -12,28 +12,28 @@
   --color-void-700: #171b29;
   --color-void-600: #232838;
 
-  /* straw-hat red */
-  --color-strawhat-400: #ff5c5c;
-  --color-strawhat-500: #ef233c;
-  --color-strawhat-600: #c0152a;
+  /* crimson accent */
+  --color-crimson-400: #ff5c5c;
+  --color-crimson-500: #ef233c;
+  --color-crimson-600: #c0152a;
 
-  /* leaf-village orange */
-  --color-leaf-400: #ffb85c;
-  --color-leaf-500: #ff8c1a;
-  --color-leaf-600: #e06a00;
+  /* amber accent */
+  --color-amber-400: #ffb85c;
+  --color-amber-500: #ff8c1a;
+  --color-amber-600: #e06a00;
 
-  /* soul-reaper black/blue */
-  --color-soul-400: #6ea8ff;
-  --color-soul-500: #2f6fed;
-  --color-soul-600: #1a3fa6;
+  /* azure accent */
+  --color-azure-400: #6ea8ff;
+  --color-azure-500: #2f6fed;
+  --color-azure-600: #1a3fa6;
 
-  /* hero-academia green/gold */
-  --color-hero-400: #5ee6a8;
-  --color-hero-500: #22c98a;
+  /* emerald + gold accents */
+  --color-emerald-400: #5ee6a8;
+  --color-emerald-500: #22c98a;
   --color-gold-400: #ffe066;
   --color-gold-500: #ffc433;
 
-  /* titan-wall stone */
+  /* stone accent */
   --color-stone-350: #a99f8f;
   --color-stone-500: #7c7367;
   --color-stone-700: #46403a;
@@ -52,49 +52,55 @@ body {
   overflow-x: hidden;
 }
 
+/* Desktop: the page itself never scrolls — the .hscroll-container inside
+   App.jsx owns all scrolling (horizontally) instead. */
+body.lock-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 ::selection {
-  background: var(--color-strawhat-500);
+  background: var(--color-crimson-500);
   color: #fff;
 }
 
-/* Impact display headings */
+/* Bold display headings */
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: 0.03em;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.35);
+  letter-spacing: -0.01em;
 }
 
 .font-accent {
   font-family: var(--font-accent);
 }
 
-/* Glowing text power-up reveal */
-.text-glow-strawhat {
+/* Glowing text reveal */
+.text-glow-crimson {
   text-shadow:
     0 0 8px rgba(239, 35, 60, 0.85),
     0 0 22px rgba(239, 35, 60, 0.55),
     0 0 60px rgba(239, 35, 60, 0.35);
 }
-.text-glow-leaf {
+.text-glow-amber {
   text-shadow:
     0 0 8px rgba(255, 140, 26, 0.85),
     0 0 22px rgba(255, 140, 26, 0.55),
     0 0 60px rgba(255, 140, 26, 0.35);
 }
-.text-glow-soul {
+.text-glow-azure {
   text-shadow:
     0 0 8px rgba(47, 111, 237, 0.85),
     0 0 22px rgba(47, 111, 237, 0.55),
     0 0 60px rgba(47, 111, 237, 0.35);
 }
-.text-glow-hero {
+.text-glow-emerald {
   text-shadow:
     0 0 8px rgba(34, 201, 138, 0.85),
     0 0 22px rgba(34, 201, 138, 0.55),
     0 0 60px rgba(255, 224, 102, 0.35);
 }
 
-/* Diagonal slash section dividers */
+/* Diagonal section dividers */
 .slash-divider {
   position: relative;
   height: 90px;
@@ -114,7 +120,46 @@ body {
   clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
 
-/* Energy aura particle canvas sits behind content */
+/* Vertical divider band + full-viewport slide, used by the horizontal
+   scroll layout (see App.jsx). */
+.v-slash-divider {
+  position: relative;
+  width: 90px;
+  height: 100%;
+}
+.v-slash-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hslide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* About's extended "scroll journey" — see About.jsx for the full story.
+   Extra horizontal scroll budget (.about-wide) with its viewport pinned via
+   native `position: sticky` along the site's horizontal scroll axis. */
+.about-wide {
+  width: 300vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+}
+.about-sticky {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Ambient particle canvas sits behind content */
 .aura-canvas {
   position: fixed;
   inset: 0;
@@ -133,17 +178,6 @@ body {
   transform: translateY(-6px) scale(1.02);
 }
 
-/* Torn / wanted-poster edge using a jagged clip-path */
-.torn-edge {
-  clip-path: polygon(
-    0% 2%, 3% 0%, 8% 1%, 14% 0%, 20% 2%, 26% 0%, 33% 1%, 40% 0%, 47% 2%,
-    54% 0%, 61% 1%, 68% 0%, 75% 2%, 82% 0%, 89% 1%, 95% 0%, 100% 2%,
-    100% 98%, 96% 100%, 90% 99%, 84% 100%, 77% 98%, 70% 100%, 63% 99%,
-    56% 100%, 49% 98%, 42% 100%, 35% 99%, 28% 100%, 21% 98%, 14% 100%,
-    7% 99%, 2% 100%
-  );
-}
-
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -152,11 +186,11 @@ body {
   background: var(--color-void-950);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--color-strawhat-500), var(--color-soul-500));
+  background: linear-gradient(var(--color-crimson-500), var(--color-azure-500));
   border-radius: 8px;
 }
 
-/* Power-level bar shimmer */
+/* Progress bar shimmer */
 @keyframes shimmer {
   0% {
     background-position: -200px 0;
@@ -165,7 +199,7 @@ body {
     background-position: 200px 0;
   }
 }
-.power-bar-fill {
+.progress-bar-fill {
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0,

@@ -6,15 +6,15 @@ export default function Timeline() {
     <section id="timeline" className="relative py-24 px-6">
       <Reveal className="text-center mb-16">
         <p className="font-accent text-xs uppercase tracking-widest text-gold-400 mb-2">
-          Character Arc
+          Career
         </p>
-        <h2 className="font-display text-4xl md:text-5xl text-white text-glow-leaf">
-          Training Arc Progression
+        <h2 className="font-display text-4xl md:text-5xl text-white text-glow-amber">
+          Experience Timeline
         </h2>
       </Reveal>
 
       <div className="max-w-3xl mx-auto relative">
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-strawhat-500 via-leaf-500 to-soul-500 md:-translate-x-1/2" />
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-crimson-500 via-amber-500 to-azure-500 md:-translate-x-1/2" />
 
         <ul className="space-y-12">
           {timeline.map((item, i) => {
@@ -30,11 +30,10 @@ export default function Timeline() {
                       alignRight ? "md:order-1 md:text-right" : "md:order-2"
                     }`}
                   >
-                    <div className="inline-block bg-void-800/80 border border-white/10 rounded-md p-5 text-left hover:border-leaf-400/50 transition-colors">
-                      <p className="font-accent text-[10px] uppercase tracking-widest text-strawhat-400 mb-1">
-                        {item.arc}
+                    <div className="inline-block bg-void-800/80 border border-white/10 rounded-md p-5 text-left hover:border-amber-400/50 transition-colors">
+                      <p className="font-accent text-[10px] uppercase tracking-widest text-crimson-400 mb-1">
+                        {item.year}
                       </p>
-                      <p className="text-xs text-stone-350 mb-2">{item.year}</p>
                       <h3 className="font-display text-xl text-white mb-1">
                         {item.title}
                       </h3>

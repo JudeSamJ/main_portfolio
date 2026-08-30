@@ -1,5 +1,5 @@
-// Diagonal sword-slash style section divider.
-// `flip` mirrors the slash direction, `color` sets the accent stroke.
+// Diagonal section divider.
+// `flip` mirrors the direction, `color` sets the accent stroke.
 export default function SlashDivider({ flip = false, color = "#ef233c" }) {
   return (
     <div className="slash-divider" aria-hidden="true">

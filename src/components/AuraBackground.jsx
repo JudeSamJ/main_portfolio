@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Lightweight canvas particle "energy aura" background.
-// Small glowing motes drifting upward, evoking chakra / haki / quirk energy.
+// Lightweight canvas particle background — small glowing motes drifting upward.
 export default function AuraBackground() {
   const canvasRef = useRef(null);
 
