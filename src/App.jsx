@@ -67,7 +67,9 @@ function App() {
             <Hero />
           </div>
           <VerticalDivider color="#ef233c" />
-          <About />
+          <div className="hslide">
+            <About />
+          </div>
           <VerticalDivider flip color="#ff8c1a" />
           <div className="hslide">
             <Skills />

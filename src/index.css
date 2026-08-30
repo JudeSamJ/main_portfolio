@@ -141,24 +141,6 @@ body.lock-scroll {
   overflow-x: hidden;
 }
 
-/* About's extended "scroll journey" — see About.jsx for the full story.
-   Extra horizontal scroll budget (.about-wide) with its viewport pinned via
-   native `position: sticky` along the site's horizontal scroll axis. */
-.about-wide {
-  width: 300vw;
-  height: 100vh;
-  flex-shrink: 0;
-  position: relative;
-}
-.about-sticky {
-  position: sticky;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
 /* Ambient particle canvas sits behind content */
 .aura-canvas {
   position: fixed;
