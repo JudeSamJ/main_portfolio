@@ -1,0 +1,83 @@
+import { motion } from "framer-motion";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiFigma,
+} from "react-icons/si";
+import { FiCloud } from "react-icons/fi";
+import Reveal from "./Reveal";
+import { skills } from "../data/content";
+
+const iconMap = {
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  React: SiReact,
+  "Tailwind CSS": SiTailwindcss,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  PostgreSQL: SiPostgresql,
+  MongoDB: SiMongodb,
+  Docker: SiDocker,
+  AWS: FiCloud,
+  "Git / GitHub": SiGit,
+  Figma: SiFigma,
+};
+
+const rankColors = {
+  "S-Rank": "text-strawhat-400 border-strawhat-500/40",
+  "A-Rank": "text-gold-400 border-gold-500/40",
+  "B-Rank": "text-soul-400 border-soul-500/40",
+  "C-Rank": "text-stone-350 border-stone-500/40",
+};
+
+export default function Skills() {
+  return (
+    <section id="skills" className="relative py-24 px-6">
+      <Reveal className="text-center mb-14">
+        <p className="font-accent text-xs uppercase tracking-widest text-leaf-400 mb-2">
+          Ability List
+        </p>
+        <h2 className="font-display text-4xl md:text-5xl text-white text-glow-leaf">
+          Skills &amp; Jutsu
+        </h2>
+      </Reveal>
+
+      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+        {skills.map((skill, i) => {
+          const Icon = iconMap[skill.name];
+          return (
+            <Reveal key={skill.name} delay={(i % 4) * 0.06}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                className={`group relative h-full flex flex-col items-center justify-center gap-3 rounded-lg border bg-void-800/60 px-4 py-6 text-center border-white/10 hover:border-soul-400/60 transition-colors overflow-hidden`}
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_0%,rgba(94,230,168,0.18),transparent_70%)]" />
+                {Icon ? (
+                  <Icon className="relative text-3xl text-white/80 group-hover:text-hero-400 group-hover:drop-shadow-[0_0_10px_rgba(94,230,168,0.8)] transition-all" />
+                ) : (
+                  <span className="relative text-3xl">⚔️</span>
+                )}
+                <p className="relative font-accent text-xs text-white/90 uppercase tracking-wide">
+                  {skill.name}
+                </p>
+                <span
+                  className={`relative text-[10px] uppercase px-2 py-0.5 rounded-full border ${rankColors[skill.level] ?? "text-stone-350 border-stone-500/40"}`}
+                >
+                  {skill.level}
+                </span>
+              </motion.div>
+            </Reveal>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

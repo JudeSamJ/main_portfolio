@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bangers", "Zen Dots", system-ui, sans-serif;
+  --font-accent: "Zen Dots", system-ui, sans-serif;
+  --font-body: "Rubik", system-ui, sans-serif;
+
+  /* deep navy/black base */
+  --color-void-950: #05060a;
+  --color-void-900: #0a0c14;
+  --color-void-800: #10131e;
+  --color-void-700: #171b29;
+  --color-void-600: #232838;
+
+  /* straw-hat red */
+  --color-strawhat-400: #ff5c5c;
+  --color-strawhat-500: #ef233c;
+  --color-strawhat-600: #c0152a;
+
+  /* leaf-village orange */
+  --color-leaf-400: #ffb85c;
+  --color-leaf-500: #ff8c1a;
+  --color-leaf-600: #e06a00;
+
+  /* soul-reaper black/blue */
+  --color-soul-400: #6ea8ff;
+  --color-soul-500: #2f6fed;
+  --color-soul-600: #1a3fa6;
+
+  /* hero-academia green/gold */
+  --color-hero-400: #5ee6a8;
+  --color-hero-500: #22c98a;
+  --color-gold-400: #ffe066;
+  --color-gold-500: #ffc433;
+
+  /* titan-wall stone */
+  --color-stone-350: #a99f8f;
+  --color-stone-500: #7c7367;
+  --color-stone-700: #46403a;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-void-950);
+  color: #e7e6ea;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-strawhat-500);
+  color: #fff;
+}
+
+/* Impact display headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.35);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+/* Glowing text power-up reveal */
+.text-glow-strawhat {
+  text-shadow:
+    0 0 8px rgba(239, 35, 60, 0.85),
+    0 0 22px rgba(239, 35, 60, 0.55),
+    0 0 60px rgba(239, 35, 60, 0.35);
+}
+.text-glow-leaf {
+  text-shadow:
+    0 0 8px rgba(255, 140, 26, 0.85),
+    0 0 22px rgba(255, 140, 26, 0.55),
+    0 0 60px rgba(255, 140, 26, 0.35);
+}
+.text-glow-soul {
+  text-shadow:
+    0 0 8px rgba(47, 111, 237, 0.85),
+    0 0 22px rgba(47, 111, 237, 0.55),
+    0 0 60px rgba(47, 111, 237, 0.35);
+}
+.text-glow-hero {
+  text-shadow:
+    0 0 8px rgba(34, 201, 138, 0.85),
+    0 0 22px rgba(34, 201, 138, 0.55),
+    0 0 60px rgba(255, 224, 102, 0.35);
+}
+
+/* Diagonal slash section dividers */
+.slash-divider {
+  position: relative;
+  height: 90px;
+  width: 100%;
+  overflow: hidden;
+}
+.slash-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.clip-slash {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.clip-slash-rev {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Energy aura particle canvas sits behind content */
+.aura-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Card hover glow */
+.glow-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.glow-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Torn / wanted-poster edge using a jagged clip-path */
+.torn-edge {
+  clip-path: polygon(
+    0% 2%, 3% 0%, 8% 1%, 14% 0%, 20% 2%, 26% 0%, 33% 1%, 40% 0%, 47% 2%,
+    54% 0%, 61% 1%, 68% 0%, 75% 2%, 82% 0%, 89% 1%, 95% 0%, 100% 2%,
+    100% 98%, 96% 100%, 90% 99%, 84% 100%, 77% 98%, 70% 100%, 63% 99%,
+    56% 100%, 49% 98%, 42% 100%, 35% 99%, 28% 100%, 21% 98%, 14% 100%,
+    7% 99%, 2% 100%
+  );
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void-950);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-strawhat-500), var(--color-soul-500));
+  border-radius: 8px;
+}
+
+/* Power-level bar shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+.power-bar-fill {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200px 100%;
+  animation: shimmer 2.2s infinite;
+}
