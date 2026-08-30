@@ -2,8 +2,8 @@ import { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ScrollControls, Scroll, useScroll, Stars, Float } from "@react-three/drei";
 import * as THREE from "three";
-import { motion } from "framer-motion";
 import { profile, stats, skills } from "../data/content";
+import Panel from "./ScrollPanel";
 
 // ---------------------------------------------------------------------------
 // PROTOTYPE: scroll-driven "fly into the portal" 3D experience.
@@ -138,33 +138,6 @@ function Scene3D() {
       <PortalRings />
       <EnergyCrystal position={[0, 0, -18]} />
     </>
-  );
-}
-
-// --- HTML overlay panels, positioned along the scroll track ---------------
-
-function Panel({ top, align = "center", children }) {
-  return (
-    <div
-      className="absolute inset-x-0 flex px-6"
-      style={{
-        top: `${top}vh`,
-        justifyContent:
-          align === "left" ? "flex-start" : align === "right" ? "flex-end" : "center",
-      }}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.5 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className={`max-w-md ${align === "center" ? "text-center" : "text-left"} ${
-          align === "right" ? "md:mr-16" : align === "left" ? "md:ml-16" : ""
-        }`}
-      >
-        {children}
-      </motion.div>
-    </div>
   );
 }
 

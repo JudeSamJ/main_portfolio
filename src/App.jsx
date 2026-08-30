@@ -10,17 +10,43 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import SlashDivider from "./components/SlashDivider";
 
-// Code-split: three.js + fiber only load once someone enters 3D mode.
+// Code-split: three.js + fiber only load once someone enters a 3D mode.
 const PortalExperience = lazy(() => import("./three/PortalExperience"));
+const RunExperience = lazy(() => import("./three/RunExperience"));
 
-function ModeToggle({ mode, onToggle }) {
+const MODES = [
+  { id: "classic", label: "Classic" },
+  { id: "portal", label: "3D Portal" },
+  { id: "run", label: "Forest Run" },
+];
+
+function ModeSwitcher({ mode, onChange }) {
   return (
-    <button
-      onClick={onToggle}
-      className="fixed bottom-6 right-6 z-[60] px-4 py-2 font-accent text-[11px] uppercase tracking-widest rounded-full border border-white/15 bg-void-900/90 backdrop-blur text-white/90 hover:border-leaf-400/60 hover:text-leaf-400 transition-colors shadow-lg"
-    >
-      {mode === "classic" ? "Enter 3D Portal ⟶" : "⟵ Classic Mode"}
-    </button>
+    <div className="fixed bottom-6 right-6 z-[60] flex gap-1 p-1 rounded-full border border-white/15 bg-void-900/90 backdrop-blur shadow-lg">
+      {MODES.map((m) => (
+        <button
+          key={m.id}
+          onClick={() => onChange(m.id)}
+          className={`px-3 py-2 font-accent text-[10px] uppercase tracking-widest rounded-full transition-colors ${
+            mode === m.id
+              ? "bg-strawhat-500 text-white"
+              : "text-white/70 hover:text-leaf-400"
+          }`}
+        >
+          {m.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function LoadingFallback({ label }) {
+  return (
+    <div className="fixed inset-0 bg-void-950 flex items-center justify-center">
+      <p className="font-accent text-xs uppercase tracking-widest text-leaf-400 animate-pulse">
+        {label}
+      </p>
+    </div>
   );
 }
 
@@ -30,18 +56,21 @@ function App() {
   if (mode === "portal") {
     return (
       <>
-        <Suspense
-          fallback={
-            <div className="fixed inset-0 bg-void-950 flex items-center justify-center">
-              <p className="font-accent text-xs uppercase tracking-widest text-leaf-400 animate-pulse">
-                Opening Portal...
-              </p>
-            </div>
-          }
-        >
+        <Suspense fallback={<LoadingFallback label="Opening Portal..." />}>
           <PortalExperience />
         </Suspense>
-        <ModeToggle mode={mode} onToggle={() => setMode("classic")} />
+        <ModeSwitcher mode={mode} onChange={setMode} />
+      </>
+    );
+  }
+
+  if (mode === "run") {
+    return (
+      <>
+        <Suspense fallback={<LoadingFallback label="Entering the Forest..." />}>
+          <RunExperience />
+        </Suspense>
+        <ModeSwitcher mode={mode} onChange={setMode} />
       </>
     );
   }
@@ -66,7 +95,7 @@ function App() {
       <div className="relative z-10">
         <Footer />
       </div>
-      <ModeToggle mode={mode} onToggle={() => setMode("portal")} />
+      <ModeSwitcher mode={mode} onChange={setMode} />
     </>
   );
 }

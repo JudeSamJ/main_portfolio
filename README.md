@@ -58,6 +58,24 @@ src/
   App.jsx
 ```
 
+## 3D prototypes
+
+A mode switcher (bottom-right) offers two experimental 3D modes on top of
+the classic scrollable site, both built with `@react-three/fiber` + `drei`
+and lazy-loaded so they don't affect classic mode's bundle size:
+
+- **3D Portal** (`src/three/PortalExperience.jsx`) — scrolling dollies the
+  camera through a tunnel of glowing rings.
+- **Forest Run** (`src/three/RunExperience.jsx`) — scrolling runs a
+  character along a winding path through a low-poly forest, with a
+  third-person chase camera that banks through turns. The character
+  model is `public/models/RobotExpressive.glb`, three.js's CC0 sample
+  rigged character — a stand-in until a real model is swapped in. To
+  swap it: drop your rigged/animated `.glb` into `public/models/`, update
+  `MODEL_PATH` in `RunExperience.jsx`, and update `RUN_CLIP`/`IDLE_CLIP`
+  to match your model's animation clip names. The waypoint path, forest,
+  and camera rig all work unchanged with any model.
+
 ## Theming
 
 Color tokens (straw-hat red, leaf-village orange, soul-reaper blue,
