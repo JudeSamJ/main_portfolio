@@ -124,9 +124,17 @@ export default function About() {
 
       <div className="grid md:grid-cols-[220px_1fr] gap-8 bg-void-800/70 border border-white/10 rounded-lg p-6 md:p-8 shadow-[0_0_60px_rgba(0,0,0,0.4)] relative overflow-hidden">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-32 h-32 md:w-full md:h-40 rounded-md bg-gradient-to-br from-crimson-600 via-void-700 to-azure-600 border-2 border-amber-400/60 flex items-center justify-center font-display text-4xl text-white text-glow-amber">
-            {profile.avatarInitials}
-          </div>
+          {profile.photo ? (
+            <img
+              src={profile.photo}
+              alt={profile.name}
+              className="w-32 h-32 md:w-full md:h-40 rounded-md object-cover border-2 border-amber-400/60"
+            />
+          ) : (
+            <div className="w-32 h-32 md:w-full md:h-40 rounded-md bg-gradient-to-br from-crimson-600 via-void-700 to-azure-600 border-2 border-amber-400/60 flex items-center justify-center font-display text-4xl text-white text-glow-amber">
+              {profile.avatarInitials}
+            </div>
+          )}
           <div className="text-center">
             <p className="font-accent text-sm text-white">{profile.name}</p>
             <p className="text-xs text-stone-350">{profile.title}</p>

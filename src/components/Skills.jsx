@@ -1,35 +1,45 @@
 import { useRef } from "react";
 import {
+  SiPython,
+  SiOpenjdk,
   SiJavascript,
-  SiTypescript,
+  SiCplusplus,
+  SiHtml5,
+  SiCss,
   SiReact,
-  SiTailwindcss,
+  SiNextdotjs,
   SiNodedotjs,
-  SiExpress,
-  SiPostgresql,
+  SiLangchain,
   SiMongodb,
-  SiDocker,
+  SiMysql,
   SiGit,
-  SiFigma,
+  SiJupyter,
+  SiFirebase,
 } from "react-icons/si";
-import { FiCloud, FiCode } from "react-icons/fi";
+import { FiCloud, FiCode, FiZap } from "react-icons/fi";
 import { gsap } from "../lib/gsap";
 import Reveal from "./Reveal";
 import { skills } from "../data/content";
 
 const iconMap = {
+  Python: SiPython,
+  Java: SiOpenjdk,
   JavaScript: SiJavascript,
-  TypeScript: SiTypescript,
-  React: SiReact,
-  "Tailwind CSS": SiTailwindcss,
+  "C++": SiCplusplus,
+  HTML: SiHtml5,
+  CSS: SiCss,
+  "React.js": SiReact,
+  "Next.js": SiNextdotjs,
   "Node.js": SiNodedotjs,
-  Express: SiExpress,
-  PostgreSQL: SiPostgresql,
+  LangChain: SiLangchain,
   MongoDB: SiMongodb,
-  Docker: SiDocker,
-  AWS: FiCloud,
+  MySQL: SiMysql,
   "Git / GitHub": SiGit,
-  Figma: SiFigma,
+  "Jupyter Notebook": SiJupyter,
+  Firebase: SiFirebase,
+  "Microsoft Azure": FiCloud,
+  AWS: FiCloud,
+  "Agentic AI": FiZap,
 };
 
 const levelColors = {

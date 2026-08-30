@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { FiMail, FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+import { FiMail, FiGithub, FiLinkedin, FiPhone } from "react-icons/fi";
 import { gsap } from "../lib/gsap";
 import Reveal from "./Reveal";
 import { socials } from "../data/content";
@@ -128,13 +128,11 @@ export default function Contact() {
             <FiLinkedin />
           </a>
           <a
-            href={socials.twitter}
-            target="_blank"
-            rel="noreferrer"
+            href={`tel:${socials.phone.replace(/\s+/g, "")}`}
             className="hover:text-emerald-400 transition-colors"
-            aria-label="Twitter"
+            aria-label="Phone"
           >
-            <FiTwitter />
+            <FiPhone />
           </a>
         </div>
       </Reveal>
