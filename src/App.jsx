@@ -85,7 +85,7 @@ function App() {
             <Timeline />
           </div>
           <VerticalDivider color="#ffc433" />
-          <div className="hslide flex flex-col">
+          <div className="hslide flex flex-col pb-4">
             <div className="flex-1">
               <Contact />
             </div>

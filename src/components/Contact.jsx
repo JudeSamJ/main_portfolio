@@ -65,8 +65,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative pt-20 pb-6 px-6">
-      <Reveal className="text-center mb-4">
+    <section id="contact" className="relative pt-16 pb-4 px-6">
+      <Reveal className="text-center mb-3">
         <p className="font-accent text-xs uppercase tracking-widest text-azure-400 mb-2">
           Get In Touch
         </p>
@@ -81,7 +81,7 @@ export default function Contact() {
 
       <Reveal
         delay={0.1}
-        className="max-w-xl mx-auto w-full bg-void-800/70 border border-white/10 rounded-lg p-5 md:p-6 relative overflow-hidden"
+        className="max-w-xl mx-auto w-full bg-void-800/70 border border-white/10 rounded-lg p-4 md:p-5 relative overflow-hidden"
       >
         <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-azure-500/10 blur-3xl" />
 
@@ -127,7 +127,7 @@ export default function Contact() {
               <textarea
                 name="message"
                 required
-                rows={3}
+                rows={2}
                 placeholder="Tell me about your project..."
                 className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400 resize-none"
               />
