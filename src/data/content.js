@@ -58,6 +58,30 @@ export const skills = [
 
 export const projects = [
   {
+    title: "Apex — B2B Corporate Card & Spend Management",
+    description:
+      "A full-stack corporate card and spend management platform in the spirit of Ramp or Brex — issues virtual and physical employee cards with spend limits and merchant rules, and tracks every transaction through a built-in ledger. Handles the full spend lifecycle: bill pay, expense reimbursements, multi-step approvals, and automatic GL coding, plus KYB/AML compliance, spend-anomaly detection, 1099-NEC tax reporting, SSO, RBAC, and multi-entity support.",
+    tags: ["FastAPI", "SQLAlchemy", "PostgreSQL", "React", "TypeScript"],
+    liveUrl: "https://apex-ten-phi.vercel.app/",
+    repoUrl: "#",
+  },
+  {
+    title: "VectraFlow — AI-Native RAG Knowledge Assistant",
+    description:
+      "Upload PDFs, DOCX, HTML, or text into isolated knowledge bases and get natural-language answers grounded in that content, with inline citations back to the source. Documents are parsed, chunked, and embedded asynchronously via Celery workers; a retrieval playground lets you compare dense/sparse/hybrid/HyDE search strategies, and an evaluation tool measures answer accuracy against custom test sets, alongside PII governance and usage analytics.",
+    tags: ["FastAPI", "Milvus", "Celery", "Groq", "React"],
+    liveUrl: "https://vectraflow-frontend.vercel.app/login",
+    repoUrl: "#",
+  },
+  {
+    title: "SoloPilot — Business Dashboard for Freelancers",
+    description:
+      "A one-stop dashboard that replaces the usual patchwork of spreadsheets and notebooks for independent freelancers — tracks income and expenses by client and project, manages client profiles and profitability, and generates GST-compliant invoices with public client-facing links, recurring billing, and Razorpay payment collection. Includes a P&L and tax-estimate analytics dashboard, team collaboration, audit logging, and offline-capable PWA support.",
+    tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Razorpay"],
+    liveUrl: "https://freelancer-dashboard-frontend.vercel.app/",
+    repoUrl: "#",
+  },
+  {
     title: "MayaAI — AI Workflow Automation Platform",
     description:
       "A secure platform that lets users create automated workflows by describing requirements in natural language — an AI model interprets intent and converts it into structured triggers and actions, no manual configuration needed. Supports Slack, Gmail, and webhook integrations with scheduling, real-time event handling, a visual workflow editor, and execution-log monitoring.",
