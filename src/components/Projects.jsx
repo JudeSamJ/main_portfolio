@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import { gsap } from "../lib/gsap";
 import Reveal from "./Reveal";
 import { projects } from "../data/content";
@@ -43,14 +43,6 @@ function ProjectCard({ project }) {
           className="flex items-center gap-1 text-white/80 hover:text-crimson-400 transition-colors"
         >
           <FiExternalLink /> Live
-        </a>
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-1 text-white/80 hover:text-crimson-400 transition-colors"
-        >
-          <FiGithub /> Code
         </a>
       </div>
     </article>
