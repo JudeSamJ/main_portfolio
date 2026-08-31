@@ -7,11 +7,11 @@ import { profile, stats } from "../data/content";
 function StatBar({ label, value, fillRef }) {
   return (
     <div>
-      <div className="flex justify-between text-xs uppercase tracking-wide mb-1">
+      <div className="flex justify-between text-[11px] uppercase tracking-wide mb-1">
         <span className="text-white/80">{label}</span>
         <span className="text-amber-400">{value}/100</span>
       </div>
-      <div className="h-2.5 w-full rounded-full bg-void-700 overflow-hidden border border-white/10">
+      <div className="h-2 w-full rounded-full bg-void-700 overflow-hidden border border-white/10">
         <div
           ref={fillRef}
           className="h-full rounded-full progress-bar-fill bg-gradient-to-r from-crimson-500 via-amber-500 to-emerald-500"
@@ -56,10 +56,10 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 px-6 flex justify-center items-center min-h-screen"
+      className="relative py-12 md:py-16 px-6 flex justify-center items-center min-h-screen"
     >
-      <div className="w-full max-w-4xl">
-        <Reveal className="text-center mb-14">
+      <div className="w-full max-w-5xl">
+        <Reveal className="text-center mb-8 md:mb-10">
           <p className="font-accent text-xs uppercase tracking-widest text-azure-400 mb-2">
             Profile
           </p>
@@ -68,30 +68,34 @@ export default function About() {
           </h2>
         </Reveal>
 
+        {/* Three columns side by side at md+ (the same breakpoint the site
+            switches to the fixed-height horizontal layout) so this section
+            always fits one viewport without needing its own scroll. Stacks
+            to a single column below md, where the page scrolls normally. */}
         <Reveal
           delay={0.1}
-          className="grid md:grid-cols-[220px_1fr] gap-8 bg-void-800/70 border border-white/10 rounded-lg p-6 md:p-8 shadow-[0_0_60px_rgba(0,0,0,0.4)] relative overflow-hidden"
+          className="grid md:grid-cols-[190px_1fr_240px] gap-6 md:gap-8 bg-void-800/70 border border-white/10 rounded-lg p-6 md:p-7 shadow-[0_0_60px_rgba(0,0,0,0.4)] relative overflow-hidden"
         >
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-3 text-center">
             {profile.photo ? (
               <img
                 src={profile.photo}
                 alt={profile.name}
-                className="w-32 h-32 md:w-full md:h-40 rounded-md object-cover border-2 border-amber-400/60"
+                className="w-28 h-28 md:w-full md:aspect-square rounded-md object-cover border-2 border-amber-400/60"
               />
             ) : (
-              <div className="w-32 h-32 md:w-full md:h-40 rounded-md bg-gradient-to-br from-crimson-600 via-void-700 to-azure-600 border-2 border-amber-400/60 flex items-center justify-center font-display text-4xl text-white text-glow-amber">
+              <div className="w-28 h-28 md:w-full md:aspect-square rounded-md bg-gradient-to-br from-crimson-600 via-void-700 to-azure-600 border-2 border-amber-400/60 flex items-center justify-center font-display text-4xl text-white text-glow-amber">
                 {profile.avatarInitials}
               </div>
             )}
-            <div className="text-center">
+            <div>
               <p className="font-accent text-sm text-white">{profile.name}</p>
               <p className="text-xs text-stone-350">{profile.title}</p>
             </div>
           </div>
 
           <div>
-            <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-6 text-stone-350">
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-4 text-stone-350">
               <div>
                 <dt className="text-xs uppercase text-amber-400">Origin</dt>
                 <dd className="text-white/90">{profile.origin}</dd>
@@ -106,20 +110,20 @@ export default function About() {
               </div>
             </dl>
 
-            <p className="text-sm md:text-base text-stone-350 leading-relaxed mb-6">
+            <p className="text-sm text-stone-350 leading-relaxed">
               {profile.bio}
             </p>
+          </div>
 
-            <div className="space-y-3">
-              {stats.map((s, i) => (
-                <StatBar
-                  key={s.label}
-                  label={s.label}
-                  value={s.value}
-                  fillRef={(el) => (fillRefs.current[i] = el)}
-                />
-              ))}
-            </div>
+          <div className="space-y-2.5 md:pt-1">
+            {stats.map((s, i) => (
+              <StatBar
+                key={s.label}
+                label={s.label}
+                value={s.value}
+                fillRef={(el) => (fillRefs.current[i] = el)}
+              />
+            ))}
           </div>
         </Reveal>
       </div>
