@@ -147,7 +147,7 @@ export default function Contact() {
           </form>
         )}
 
-        <div className="flex justify-center gap-6 mt-4 pt-3 border-t border-white/10 text-xl text-stone-350">
+        <div className="flex justify-center gap-6 mt-4 pt-3 border-t border-white/10 text-2xl text-white/80">
           <a
             href={`mailto:${socials.email}`}
             className="hover:text-crimson-400 transition-colors"
