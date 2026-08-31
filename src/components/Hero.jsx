@@ -12,18 +12,18 @@ const accentPhotos = [
     src: "/images/me_1.jpeg",
     rotate: -9,
     className:
-      "absolute -left-10 -bottom-10 w-28 h-36 border-azure-400/60 z-10",
+      "absolute -left-6 -bottom-6 w-24 h-28 border-azure-400/60 z-10",
   },
   {
     src: "/images/me_4.jpeg",
     rotate: 7,
-    className: "absolute -right-8 -top-8 w-24 h-32 border-amber-400/60 z-10",
+    className: "absolute -right-4 top-2 w-20 h-28 border-amber-400/60 z-10",
   },
   {
     src: "/images/me_3.jpeg",
     rotate: 13,
     className:
-      "absolute -right-10 bottom-6 w-24 h-24 border-emerald-400/60 z-10",
+      "absolute -right-6 bottom-4 w-20 h-20 border-emerald-400/60 z-10",
   },
 ];
 
@@ -137,17 +137,17 @@ export default function Hero() {
     <section
       ref={rootRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16"
+      className="relative min-h-screen flex items-center justify-center px-6 pt-20 pb-10"
     >
-      <div className="w-full max-w-6xl grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+      <div className="w-full max-w-6xl grid md:grid-cols-[1.15fr_0.85fr] gap-8 md:gap-10 lg:gap-16 items-center">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <p className="hero-eyebrow font-accent text-xs md:text-sm text-amber-400 uppercase mb-6 opacity-0">
             {profile.title}
           </p>
 
           <h1
             ref={lettersRef}
-            className="font-display text-5xl sm:text-7xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center lg:justify-start gap-x-4"
+            className="font-display text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center md:justify-start gap-x-4"
           >
             {words.map((word, wi) => (
               <span key={wi} className="inline-flex whitespace-nowrap">
@@ -172,7 +172,7 @@ export default function Hero() {
             {profile.tagline}
           </p>
 
-          <div className="hero-actions mt-10 flex flex-wrap justify-center lg:justify-start gap-4 opacity-0">
+          <div className="hero-actions mt-10 flex flex-wrap justify-center md:justify-start gap-4 opacity-0">
             <a
               href="#projects"
               onClick={(e) => goTo(e, "#projects")}
@@ -190,7 +190,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-[280px] mx-auto lg:max-w-none lg:mx-0 aspect-[3/4]">
+        <div className="relative w-full max-w-[240px] md:max-w-[280px] mx-auto md:mx-0 aspect-[3/4]">
           <div
             ref={mainPhotoRef}
             className="absolute inset-0 rounded-2xl overflow-hidden border-2 border-crimson-400/50 shadow-[0_0_60px_rgba(239,35,60,0.3)]"
