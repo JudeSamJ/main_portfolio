@@ -65,8 +65,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-6">
-      <Reveal className="text-center mb-14">
+    <section id="contact" className="relative pt-20 pb-6 px-6">
+      <Reveal className="text-center mb-4">
         <p className="font-accent text-xs uppercase tracking-widest text-azure-400 mb-2">
           Get In Touch
         </p>
@@ -81,7 +81,7 @@ export default function Contact() {
 
       <Reveal
         delay={0.1}
-        className="max-w-xl mx-auto bg-void-800/70 border border-white/10 rounded-lg p-6 md:p-8 relative overflow-hidden"
+        className="max-w-xl mx-auto w-full bg-void-800/70 border border-white/10 rounded-lg p-5 md:p-6 relative overflow-hidden"
       >
         <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-azure-500/10 blur-3xl" />
 
@@ -95,9 +95,9 @@ export default function Contact() {
             </p>
           </div>
         ) : (
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <form className="space-y-3" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-xs uppercase tracking-widest text-amber-400 mb-2">
+              <label className="block text-xs uppercase tracking-widest text-amber-400 mb-1">
                 Name
               </label>
               <input
@@ -105,11 +105,11 @@ export default function Contact() {
                 name="name"
                 required
                 placeholder="Your name"
-                className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400"
+                className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400"
               />
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-widest text-amber-400 mb-2">
+              <label className="block text-xs uppercase tracking-widest text-amber-400 mb-1">
                 Email
               </label>
               <input
@@ -117,19 +117,19 @@ export default function Contact() {
                 name="email"
                 required
                 placeholder="you@example.com"
-                className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400"
+                className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400"
               />
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-widest text-amber-400 mb-2">
+              <label className="block text-xs uppercase tracking-widest text-amber-400 mb-1">
                 Message
               </label>
               <textarea
                 name="message"
                 required
-                rows={4}
+                rows={3}
                 placeholder="Tell me about your project..."
-                className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400 resize-none"
+                className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400 resize-none"
               />
             </div>
 
@@ -147,7 +147,7 @@ export default function Contact() {
           </form>
         )}
 
-        <div className="flex justify-center gap-6 mt-8 pt-6 border-t border-white/10 text-xl text-stone-350">
+        <div className="flex justify-center gap-6 mt-4 pt-3 border-t border-white/10 text-xl text-stone-350">
           <a
             href={`mailto:${socials.email}`}
             className="hover:text-crimson-400 transition-colors"

@@ -142,7 +142,7 @@ function ProjectCard({ project }) {
         </div>
       </div>
 
-      <p className="relative text-sm leading-relaxed mb-4 text-stone-350">
+      <p className="relative text-sm leading-relaxed mb-4 text-stone-350 md:line-clamp-6">
         {project.description}
       </p>
 
@@ -171,8 +171,12 @@ function ProjectCard({ project }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 px-6">
-      <Reveal className="text-center mb-14">
+    <section
+      id="projects"
+      className="relative py-16 px-6 flex items-center justify-center min-h-screen"
+    >
+      <div className="w-full max-w-6xl">
+      <Reveal className="text-center mb-10">
         <p className="font-accent text-xs uppercase tracking-widest text-crimson-400 mb-2">
           Portfolio
         </p>
@@ -182,7 +186,7 @@ export default function Projects() {
       </Reveal>
 
       <div
-        className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
         style={{ perspective: "1200px" }}
       >
         {projects.map((p, i) => (
@@ -190,6 +194,7 @@ export default function Projects() {
             <ProjectCard project={p} />
           </Reveal>
         ))}
+      </div>
       </div>
     </section>
   );

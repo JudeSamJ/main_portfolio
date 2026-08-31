@@ -36,22 +36,14 @@ function App() {
 
   // Redirect ordinary vertical mouse-wheel input into horizontal scroll —
   // most mice have no horizontal wheel, so without this the site would only
-  // be scrollable via trackpad gestures or dragging the scrollbar. Skipped
-  // while the current slide still has vertical room to move in the wheel's
-  // direction (content taller than the viewport), so that content stays
-  // reachable instead of being permanently stuck below the fold — once
-  // that slide is scrolled to its top/bottom edge, wheel input falls
-  // through to horizontal navigation again as normal.
+  // be scrollable via trackpad gestures or dragging the scrollbar. This is
+  // the ONLY way to scroll on desktop — every slide is designed to fit
+  // within one viewport height (see each section's own layout), so there's
+  // no vertical scrolling to fall back to or account for here.
   useEffect(() => {
     if (!isDesktop || !scrollerEl) return;
     const onWheel = (e) => {
       if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-      const slide = e.target.closest(".hslide");
-      if (slide) {
-        const canScrollDown = e.deltaY > 0 && slide.scrollTop + slide.clientHeight < slide.scrollHeight - 1;
-        const canScrollUp = e.deltaY < 0 && slide.scrollTop > 0;
-        if (canScrollDown || canScrollUp) return;
-      }
       e.preventDefault();
       scrollerEl.scrollLeft += e.deltaY;
     };

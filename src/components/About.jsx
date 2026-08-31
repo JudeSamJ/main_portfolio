@@ -110,7 +110,7 @@ export default function About() {
               </div>
             </dl>
 
-            <p className="text-sm text-stone-350 leading-relaxed">
+            <p className="text-sm text-stone-350 leading-relaxed md:line-clamp-6">
               {profile.bio}
             </p>
           </div>

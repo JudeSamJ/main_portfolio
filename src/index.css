@@ -137,8 +137,7 @@ body.lock-scroll {
   width: 100vw;
   height: 100vh;
   flex-shrink: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Ambient particle canvas sits behind content */
