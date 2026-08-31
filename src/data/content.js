@@ -56,48 +56,52 @@ export const skills = [
   { name: "Power Platform", category: "Tooling", level: "Familiar" },
 ];
 
+// `brand` styling per project echoes that project's own site identity —
+// its logo mark (cropped from its real login page where one exists),
+// accent color (matched from its own UI), and a font pulled from the
+// portfolio's own type system that best matches its wordmark style.
 export const projects = [
   {
-    title: "Apex — B2B Corporate Card & Spend Management",
+    title: "Apex",
+    tagline: "B2B Corporate Card & Spend Management",
     description:
       "A full-stack corporate card and spend management platform in the spirit of Ramp or Brex — issues virtual and physical employee cards with spend limits and merchant rules, and tracks every transaction through a built-in ledger. Handles the full spend lifecycle: bill pay, expense reimbursements, multi-step approvals, and automatic GL coding, plus KYB/AML compliance, spend-anomaly detection, 1099-NEC tax reporting, SSO, RBAC, and multi-entity support.",
     tags: ["FastAPI", "SQLAlchemy", "PostgreSQL", "React", "TypeScript"],
     liveUrl: "https://apex-ten-phi.vercel.app/",
+    brand: {
+      logo: "/images/logos/apex.png",
+      accent: "azure",
+      font: "font-display uppercase tracking-wide",
+      badge: "dark",
+    },
   },
   {
-    title: "VectraFlow — AI-Native RAG Knowledge Assistant",
+    title: "VectraFlow",
+    tagline: "AI-Native RAG Knowledge Assistant",
     description:
       "Upload PDFs, DOCX, HTML, or text into isolated knowledge bases and get natural-language answers grounded in that content, with inline citations back to the source. Documents are parsed, chunked, and embedded asynchronously via Celery workers; a retrieval playground lets you compare dense/sparse/hybrid/HyDE search strategies, and an evaluation tool measures answer accuracy against custom test sets, alongside PII governance and usage analytics.",
     tags: ["FastAPI", "Milvus", "Celery", "Groq", "React"],
     liveUrl: "https://vectraflow-frontend.vercel.app/login",
+    brand: {
+      monogram: "VF",
+      accent: "emerald",
+      font: "font-body font-semibold",
+      badge: "dark",
+    },
   },
   {
-    title: "SoloPilot — Business Dashboard for Freelancers",
+    title: "SoloPilot",
+    tagline: "Business Dashboard for Freelancers",
     description:
       "A one-stop dashboard that replaces the usual patchwork of spreadsheets and notebooks for independent freelancers — tracks income and expenses by client and project, manages client profiles and profitability, and generates GST-compliant invoices with public client-facing links, recurring billing, and Razorpay payment collection. Includes a P&L and tax-estimate analytics dashboard, team collaboration, audit logging, and offline-capable PWA support.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Razorpay"],
     liveUrl: "https://freelancer-dashboard-frontend.vercel.app/",
-  },
-  {
-    title: "MayaAI — AI Workflow Automation Platform",
-    description:
-      "A secure platform that lets users create automated workflows by describing requirements in natural language — an AI model interprets intent and converts it into structured triggers and actions, no manual configuration needed. Supports Slack, Gmail, and webhook integrations with scheduling, real-time event handling, a visual workflow editor, and execution-log monitoring.",
-    tags: ["OpenAI API", "LangChain", "PostgreSQL", "Node-Cron", "Slack API"],
-    liveUrl: "#",
-  },
-  {
-    title: "Karnataka State Police Hackathon 2024 — Analytical Dashboard",
-    description:
-      "An Android analytics dashboard tracking key performance indicators — response times, crime clearance rates — across units and locations for strategic decision-making. Streamlines duty allocation, tracks officer records, assigns cases based on experience, and equips officers with resources for high-pressure situations.",
-    tags: ["Android Studio", "Android"],
-    liveUrl: "#",
-  },
-  {
-    title: "IBM Z Datathon 2024 — Transforming Urban Mobility",
-    description:
-      "A smart transportation platform integrating real-time traffic, passenger demand, weather, and incident data to make accurate predictions for transportation management. Optimizes routes, forecasts demand, and improves the commuting experience by reducing delays, overcrowding, and cost.",
-    tags: ["Jupyter Notebook", "LinuxOne"],
-    liveUrl: "#",
+    brand: {
+      logo: "/images/logos/solopilot.png",
+      accent: "amber",
+      font: "font-accent font-semibold",
+      badge: "light",
+    },
   },
 ];
 
