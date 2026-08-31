@@ -4,8 +4,13 @@ import { gsap } from "../lib/gsap";
 import Reveal from "./Reveal";
 import { socials } from "../data/content";
 
+// Formspree endpoint — set VITE_FORMSPREE_ENDPOINT in .env.local (dev) and
+// in your host's environment variables (production). See README for setup.
+const FORM_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
 export default function Contact() {
-  const [status, setStatus] = useState("idle"); // idle | sending | sent
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [errorMessage, setErrorMessage] = useState("");
   const successRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -18,11 +23,45 @@ export default function Contact() {
     }
   }, [status]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Placeholder submit handler — wire up to your form backend / email API.
+    const form = e.target;
+
+    if (!FORM_ENDPOINT) {
+      setStatus("error");
+      setErrorMessage(
+        `Contact form isn't set up yet — email me directly at ${socials.email}.`
+      );
+      return;
+    }
+
     setStatus("sending");
-    setTimeout(() => setStatus("sent"), 1200);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        const data = await res.json().catch(() => null);
+        setErrorMessage(
+          data?.errors?.map((err) => err.message).join(", ") ||
+            "Something went wrong sending your message. Please try again."
+        );
+        setStatus("error");
+      }
+    } catch {
+      setErrorMessage(
+        "Network error — please try again, or email me directly."
+      );
+      setStatus("error");
+    }
   };
 
   return (
@@ -63,6 +102,7 @@ export default function Contact() {
               </label>
               <input
                 type="text"
+                name="name"
                 required
                 placeholder="Your name"
                 className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400"
@@ -74,6 +114,7 @@ export default function Contact() {
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="you@example.com"
                 className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400"
@@ -84,12 +125,17 @@ export default function Contact() {
                 Message
               </label>
               <textarea
+                name="message"
                 required
                 rows={4}
                 placeholder="Tell me about your project..."
                 className="w-full bg-void-900 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-azure-400 focus:ring-1 focus:ring-azure-400 resize-none"
               />
             </div>
+
+            {status === "error" && (
+              <p className="text-sm text-crimson-400">{errorMessage}</p>
+            )}
 
             <button
               type="submit"
